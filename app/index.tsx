@@ -4,8 +4,10 @@ import { Image } from "react-native";
 import '../global.css'
 import { useRef, useState } from "react";
 import Pagination from "@/components/Pagination";
+import { useRouter } from "expo-router";
 export default function Index() {
   const { width } = useWindowDimensions()
+  const routes = useRouter()
   const [currentPage, setCurrentPage] = useState(0)
   const ref = useRef<any>(null)
   const updatedSlidEvent = (e: any) => {
@@ -37,7 +39,7 @@ export default function Index() {
         flex: 1,
         // justifyContent: "",
         alignItems: "center",
-        backgroundColor: '#FFFF',
+        backgroundColor: '#F2F2F2',
 
       }}
     >
@@ -60,14 +62,14 @@ export default function Index() {
           </View>
         )} keyExtractor={(item) => item.text} />
         <View>
-          <View className="absolute bottom-64 w-full bg-blasck ">
+          <View className="absolute bottom-64 w-full  ">
             <Pagination currentPage={currentPage} />
           </View>
           <View className="absolute w-full bottom-20  " style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: 'center', gap: 8 }}>
-            <TouchableOpacity onPress={handleNextSlide} style={styles.button2} >
+            <TouchableOpacity onPress={currentPage === onBoardingArrays.length - 1 ? () =>  routes.push('/login') :  handleNextSlide } style={styles.button2} >
               <Text style={styles.text2}>{currentPage === onBoardingArrays.length - 1 ? ' Login':'Next'}</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={handleLastSlide} style={styles.button3}>
+            <TouchableOpacity onPress={currentPage === onBoardingArrays.length - 1 ? () =>  routes.push('/') :  handleLastSlide} style={styles.button3}>
               <Text style={styles.text}>{currentPage === onBoardingArrays.length - 1 ? ' Create Account':'Skip'}</Text>
             </TouchableOpacity>
 
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 3,
     width: '80%',
-    backgroundColor: 'white',
+    backgroundColor: '#F2F2F2',
     borderWidth: 1
   },
   text: {
