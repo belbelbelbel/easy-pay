@@ -100,11 +100,11 @@ export default SignIn;
 const styles = StyleSheet.create({
     input: {
         color: 'black',
-        borderWidth: 2,
+        borderBottomWidth: 2,
         padding: 10,
-        paddingHorizontal: 15,
-        borderRadius: 10,
-        marginBottom: 10,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        marginBottom: 15,
         fontSize: 16,
         backgroundColor: '',
         shadowColor: "#000",

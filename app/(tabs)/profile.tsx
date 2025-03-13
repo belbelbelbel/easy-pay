@@ -15,8 +15,8 @@ export default function profile() {
           </View>
           <Ionicons name="settings-outline" size={30} />
         </View>
-        <View className='w-full h-[14rem] flex  px-3 border-t-2 flex-row items-center mt-10 gap-3 rounded-[1rem] bg-blsack'>
-          <View className='w-40 h-40 bg-white flex items-center justify-center  border-2 border-black rounded-full bg-white'>
+        <View className='w-full h-[14rem] flex  px-3 border-t-2 flex-row items-center mt-10 gap-3 rounded-[1rem] '>
+          <View className='w-40 h-40 bg-white flex items-center justify-center  border-2 border-black rounded-full bg-whitqe'>
             <Image source={require('../../assets/images/profileimg1.png')}/>
           </View>
            <View className="flex  flex-col gap-5">
