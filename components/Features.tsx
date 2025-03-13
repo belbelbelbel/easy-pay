@@ -9,7 +9,7 @@ const Features = () => {
             <View className="flex flex-row items-center justify-between w-full h-[6rem]">
                 {iconData.map((item: any, index) => (
                     <Pressable key={index} className="flex gap-[2px] items-center">
-                        <Ionicons name={item.name} size={28} color="white" />
+                        <Ionicons name={item.name} size={28} color="white"/>
                         {item.title && <Text className="text-white font-bold">{item.title}</Text>}
                     </Pressable>
                 ))}

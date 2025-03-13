@@ -12,17 +12,17 @@ const Transaction = () => {
             </View>
         );
     }
-
+    
     return (
         <View className="mt-5 flex-1">
             <FlatList
                 data={transactions}
                 keyExtractor={(item, index) => item.id?.toString() || index.toString()}
                 ListFooterComponent={<View className="h-20" />}
-                ListHeaderComponent={<View className="h-10" />}
+                ListHeaderComponent={<View className="h-5" />}
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ paddingBottom: 50 }}
-                renderItem={({ item }) => (
+                renderItem={({ item }:any) => (
                     <View className="flex-row items-center bg-white p-4 py-7 rounded-lg mb-4 shadow-sm">
                         <View className="p-2 bg-gray-200 rounded-full">
                             <Ionicons name={item.icon} size={24} color="#333" />
