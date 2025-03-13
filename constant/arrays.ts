@@ -57,7 +57,6 @@ export const CarouselData = [
     }
 ];
 
-import { Ionicons } from "@expo/vector-icons";
 
 export const transactions = [
   {

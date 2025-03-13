@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default function TabLayout() {
   return (
+
     <Tabs
       screenOptions={{
         headerShown: false,
@@ -12,6 +13,7 @@ export default function TabLayout() {
         tabBarStyle: styles.tabBarStyle,
       }}
     >
+
       <Tabs.Screen
         name="index"
         options={{
@@ -62,7 +64,7 @@ export default function TabLayout() {
           ),
         }}
       />
-
+    
       <Tabs.Screen
         name="profile"
         options={{
@@ -75,6 +77,7 @@ export default function TabLayout() {
           ),
         }}
       />
+      
     </Tabs>
   );
 }

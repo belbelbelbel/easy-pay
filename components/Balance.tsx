@@ -4,7 +4,7 @@ import React from 'react'
 const Balance = ({ user }: any) => {
   return (
     <View className="flex flex-row items-center mt-7 justify-between">
-      <View>
+      <View className='flex gap-2'>
         <Text className="font-bold text-2xl">Hi, {user} </Text>
         <Text>Your available balance</Text>
       </View>

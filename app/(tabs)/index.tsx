@@ -6,10 +6,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { menuData, iconData, transactions } from '@/constant/arrays';
 import Carousel from '@/components/Carousel';
 import Utility from '@/components/Utility';
-import Features from '@/components/features';
 import Balance from '@/components/Balance';
 import SelectedTransaction from '@/components/SelectedTransaction';
-
+import Features from '@/components/Features';
 const index = () => {
     const routes = useRouter()
     const [user, setUser] = useState('')
