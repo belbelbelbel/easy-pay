@@ -26,7 +26,7 @@ export default function InputComponent({ text, onChangeText, Placeholder, style,
                 show && (
                     <Pressable style={{ position: 'absolute', right: 12 }} onPress={() => setPressed(!pressed)}>
                         {
-                            pressed ? <Ionicons name='eye' color={'black'} size={25} ></Ionicons> : <Ionicons name='eye-off' color={'black'} size={25} ></Ionicons>
+                            !pressed ? <Ionicons name='eye' color={'black'} size={25} ></Ionicons> : <Ionicons name='eye-off' color={'black'} size={25} ></Ionicons>
                         }
                     </Pressable>
                 )

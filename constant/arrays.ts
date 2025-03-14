@@ -30,7 +30,7 @@ export const iconData = [
     { name: 'car', title: 'Vehicle', color: '#6CD690' },     // Softer Green
     { name: 'home', title: 'Rent Bills', color: '#C39BD3' }, // Softer Purple
     { name: 'cash', title: 'Invest', color: '#F5A962' },     // Softer Orange
-    { name: 'grid', title: 'More', color: '#A0A0A0' }        // Softer Grey
+    { name: 'call-outline', title: 'Airtime', color: '#A0A0A0', href: '/airtime' }        // Softer Grey
 ];
 
 export const CarouselData = [

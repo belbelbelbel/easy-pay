@@ -2,18 +2,21 @@ import { onBoardingArrays } from "@/constant/arrays";
 import { FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from "react-native";
 import { Image } from "react-native";
 import '../global.css'
+
 import { useRef, useState } from "react";
 import Pagination from "@/components/Pagination";
 import { useRouter } from "expo-router";
 export default function Index() {
+  // console.log(API_URL)
   const { width } = useWindowDimensions()
   const routes = useRouter()
   const [currentPage, setCurrentPage] = useState(0)
   const ref = useRef<any>(null)
+
   const updatedSlidEvent = (e: any) => {
-    //contentOFFset .x is contained in the nativeevent which is co=yaied in the evenet handler to het the index of each widthcontent
     setCurrentPage(Math.round(e.nativeEvent.contentOffset.x / width))
   }
+
   const handleLastSlide = () => {
     const lastslide = onBoardingArrays.length - 1
     if (lastslide > 0) {

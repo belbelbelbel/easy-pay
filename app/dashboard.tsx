@@ -7,7 +7,9 @@ import { iconData } from '@/constant/arrays';
 
 const dashboard = () => {
   const routes = useRouter()
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState<any>('')
+  const [balance, setBalance] = useState('')
+
   useEffect(() => {
     const checkUser = async () => {
       try {
@@ -16,25 +18,26 @@ const dashboard = () => {
           routes.push("/");
         }
         else (
-          setUser(JSON.parse(userStored).email)
+          setUser(JSON.parse(userStored))
         )
+        console.log("eyoo",user)
       } catch (error) {
         console.error("Error fetching user:", error);
       }
     };
     checkUser()
-  })
+  },[user])
   return (
     <SafeAreaView className='flex'>
       <View className='w-[90%] mx-auto'>
         <Image source={require('../assets/images/logo.png')} className="w-[13rem] mt-7 h-[2.5rem] z-50 " />
         <View className='flex flex-row items-center mt-5 justify-between'>
           <View className='flex '>
-            <Text className='font-bold text-2xl'>Hi,{user} smantha </Text>
+            <Text className='font-bold text-2xl'>Hi,{user.name} smantha </Text>
             <Text>Your available balance</Text>
           </View>
           <View>
-            <Text className='text-2xl font-bold'>Rs. 500.00</Text>
+            <Text className='text-2xl font-bold'>{user.balance}</Text>
           </View>
         </View>
         <View className='w-full mt-6 bg-black justify-center flex h-[7rem] px-7 rounded-[0.8rem]'>

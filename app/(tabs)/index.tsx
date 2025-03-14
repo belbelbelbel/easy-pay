@@ -21,7 +21,7 @@ const index = () => {
                 if (!userStored) {
                     routes.push("/");
                 } else {
-                    setUser(JSON.parse(userStored).name)
+                    setUser(JSON.parse(userStored))
                 }
             } catch (error) {
                 console.error("Error fetching user:", error);
@@ -33,14 +33,17 @@ const index = () => {
     return (
         <SafeAreaView className="flex-1 bg-gray-100">
             <View className="w-[90%] mx-auto flex-1">
-                <Pressable onPress={() => routes.push('/')}>
+                <Pressable className='flex flex-row mb-2 items-center justify-between' onPress={() => routes.push('/')}>
                     <Image source={require('../../assets/images/logo.png')} className="w-[11rem] mt-7 h-[2rem] z-50 " />
+                    <Text onPress={() => routes.push('/contact')} className=' flex items-center px-2 absolute right-0 top-6 justify-center h-16'>
+                        <Ionicons name="call" size={30} />
+                    </Text>
                 </Pressable>
                 <Balance user={user} />
                 <Features />
                 <Utility />
                 <Carousel />
-                <SelectedTransaction selectedTransaction={selectedTransaction}/>
+                <SelectedTransaction selectedTransaction={selectedTransaction} />
             </View>
         </SafeAreaView>
     )
