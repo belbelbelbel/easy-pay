@@ -103,8 +103,8 @@ const SignIn = () => {
 
                     <View>
                         <TouchableOpacity
-                            disabled={loading}
-                            className={`bg-black w-[100%] h-[4.2rem] px-5 flex items-center justify-between flex-row rounded-[7px] ${loading ? 'opacity-50' : ''}`}
+                            // disabled={loading}
+                            className={`bg-black w-[100%] h-[4.2rem] px-5 flex items-center justify-between flex-row rounded-[7px] ${loading ? 'opacity-100' : ''}`}
                             onPress={handleLogin}
                         >
                             {loading ? (

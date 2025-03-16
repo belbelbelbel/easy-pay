@@ -16,7 +16,7 @@ const Utility = () => {
                 {menuData.map((item: any, index) => (
                     <Pressable
                         onPress={() => {
-                            console.log("Navigating to:", item.href);
+                            // console.log("Navigating to:", item.href);
                             item.href &&  routes.push( item.href);
                         }}
                         key={index} className="w-[22%] flex py-7 items-center">

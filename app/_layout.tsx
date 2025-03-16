@@ -9,7 +9,11 @@ export default function RootLayout() {
        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
        <Stack.Screen name="airtime" options={{ headerShown: false }}></Stack.Screen>
        <Stack.Screen name="network/[id]" options={{ headerShown: false }}></Stack.Screen> 
+       <Stack.Screen name="datanetwork/[id]" options={{ headerShown: false }}></Stack.Screen> 
+       <Stack.Screen name="cable/[id]" options={{ headerShown: false }}></Stack.Screen>
        <Stack.Screen name="contact" options={{ headerShown: false }}></Stack.Screen>
+       <Stack.Screen name="rechargedata" options={{ headerShown: false }}></Stack.Screen>
+       <Stack.Screen name="television" options={{ headerShown: false }}></Stack.Screen>
     </Stack>
   );
 }

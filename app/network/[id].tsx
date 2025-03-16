@@ -58,8 +58,11 @@ export default function networkProvider() {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
-      alert('Airtime purchase successful');
+      if(res.data.status === 'success'){
+        alert('Airtime purchased successfully');
+        setForm({ numbers: '', amount: '' }); // Reset form
+      }
+      console.log('Response::', res.data);
     } catch (error) {
       console.error('Error buying airtime:', error);
       alert('Error buying airtime');
@@ -106,7 +109,7 @@ export default function networkProvider() {
         </View>
 
         <TouchableOpacity
-          className='w-full border-2 top-[5rem] border-black mx-auto h-[4.2rem] px-5 flex bg-black items-center justify-center flex-row rounded-[7px]'
+          className='w-full border-2 top-[5rem] border-black mx-auto h-[4.2rem] px-5 flex bg-black items-center justify-center flex-row rounded-[10px]'
           onPress={handleBuyAirtime}
           disabled={loading}
         >

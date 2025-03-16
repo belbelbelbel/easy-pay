@@ -26,10 +26,10 @@ export const iconData = [
     { name: 'globe', title: 'Internet', color: '#4A90E2' },  // Softer Blue
     { name: 'water', title: 'Water', color: '#6EC6FF' },     // Softer Light Blue
     { name: 'flash', title: 'Electricity', color: '#FFD166' }, // Softer Yellow
-    { name: 'tv', title: 'Tv Cable', color: '#FF6B81' },     // Softer Red
+    { name: 'tv', title: 'Tv Cable', color: '#FF6B81', href: '/television' },     // Softer Red
     { name: 'car', title: 'Vehicle', color: '#6CD690' },     // Softer Green
     { name: 'home', title: 'Rent Bills', color: '#C39BD3' }, // Softer Purple
-    { name: 'cash', title: 'Invest', color: '#F5A962' },     // Softer Orange
+    { name: 'cellular', title: 'Data', color: '#F5A962',href: '/rechargedata' },    
     { name: 'call-outline', title: 'Airtime', color: '#A0A0A0', href: '/airtime' }        // Softer Grey
 ];
 

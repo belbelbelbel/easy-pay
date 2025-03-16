@@ -6,15 +6,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 
-
 const providerImages: { [key: string]: any } = {
   AIRTEL: require('../assets/images/bills/Airtel-Airtime.png'),
   MTN: require('../assets/images/bills/MTN-Airtime.png'),
   GLO: require('../assets/images/bills/GLO-Airtime.jpg'),
   '9MOBILE': require('../assets/images/bills/9mobile-Airtime.png'),
+  SMILE4G: require('../assets/images/bills/Smile-airtime.jpeg'),
 }
 
-const Airtime = () => {
+const rechargedata = () => {
   const [airtime, setAirtime] = useState([])
   const [loading, setLoading] = useState(false)
   const routes = useRouter()
@@ -26,7 +26,7 @@ const Airtime = () => {
       if (!token) return;
 
       try {
-        const res = await axios.get(`${API_URL}/api/v1/bill/airtime/providers`, {
+        const res = await axios.get(`${API_URL}/api/v1/bill/data/providers`, {
           headers: { 'Authorization': `Bearer ${token}` },
         })
 
@@ -37,7 +37,7 @@ const Airtime = () => {
 
         setAirtime(dataWithImages)
 
-        await AsyncStorage.setItem('airtimeProviders', JSON.stringify(dataWithImages))
+        await AsyncStorage.setItem('dataProviders', JSON.stringify(dataWithImages))
       } catch (error) {
         console.log(error)
       }
@@ -55,7 +55,7 @@ const Airtime = () => {
         <View className="flex flex-row mb-8 items-center w-full justify-between">
           <View className="flex flex-row items-center gap-10">
             <Ionicons name="chevron-back" size={30} onPress={() => routes.back()} />
-            <Text className="text-2xl font-bold text-black">Airtime Providers</Text>
+            <Text className="text-2xl font-bold text-black">Data Providers</Text>
           </View>
           <Ionicons name="search" size={30} />
         </View>
@@ -72,7 +72,7 @@ const Airtime = () => {
                 data={airtime}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item }: any) => (
-                  <TouchableOpacity onPress={() => routes.push(`/network/${item.provider}`)} className="bg-white rounded-[1rem] p-4 mb-4 flex-row items-center shadow-sm">
+                  <TouchableOpacity onPress={() => routes.push(`/datanetwork/${item.provider}`)} className="bg-white rounded-[1rem] p-4 mb-4 flex-row items-center shadow-sm">
                     <Image
                       source={providerImages[item.provider] || require('../assets/images/bills/GLO-Airtime.jpg')}
                       className="w-16 h-16 rounded-md mr-4"
@@ -80,7 +80,7 @@ const Airtime = () => {
                     />
                     <View>
                       <Text className="text-lg font-semibold text-gray-900">{item.provider}</Text>
-                      {/* <Text className="text-gray-500 text-sm">Min: Rs. {item.minAmount}</Text> */}
+                      <Text className="text-gray-500 text-sm">Min: Rs. {item.minAmount}</Text>
                     </View>
                   </TouchableOpacity>
                 )}
@@ -92,4 +92,4 @@ const Airtime = () => {
   )
 }
 
-export default Airtime
+export default rechargedata

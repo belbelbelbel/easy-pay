@@ -11,8 +11,8 @@ import { API_URL } from '@env'
 const Contact = () => {
   const routes = useRouter()
   const [form, setForm] = useState({
-    firstname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     email: '',
     message: '',
     phone: '',
@@ -41,13 +41,12 @@ const Contact = () => {
       const token = user?.token;
 
       const res = await axios.post(`${API_URL}/api/v1/contact-us`, 
-        { ...form }, // Sending form data properly
+        { ...form },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
       console.log('Response:', res.data);
       Alert.alert('Success', 'Message sent successfully!');
-      setForm({ firstname: '', lastname: '', email: '', message: '', phone: '' }); // Reset form
+      setForm({ firstName: '', lastName: '', email: '', message: '', phone: '' }); // Reset form
     } catch (error) {
       console.error('Error sending message:', error);
       Alert.alert('Error', 'Something went wrong. Please try again.');
@@ -55,6 +54,7 @@ const Contact = () => {
       setLoading(false);
     }
   }
+  console.log(form)
 
   return (
     <SafeAreaView className='flex-1'>
@@ -67,8 +67,8 @@ const Contact = () => {
         </View>
 
         <View className='w-full h-[74%] flex justify-center'>
-          <InputComponent text={form.firstname} style={styles.input} onChangeText={(value) => handleOnChange('firstname', value)} Placeholder={'Enter Your First Name'} />
-          <InputComponent text={form.lastname} style={styles.input} onChangeText={(value) => handleOnChange('lastname', value)} Placeholder={'Enter Your Last Name'} />
+          <InputComponent text={form.firstName} style={styles.input} onChangeText={(value) => handleOnChange('firstName', value)} Placeholder={'Enter Your First Name'} />
+          <InputComponent text={form.lastName} style={styles.input} onChangeText={(value) => handleOnChange('lastName', value)} Placeholder={'Enter Your Last Name'} />
           <InputComponent text={form.email} style={styles.input} onChangeText={(value) => handleOnChange('email', value)} Placeholder={'Enter Your Email'} />
           <InputComponent text={form.message} style={styles.input} onChangeText={(value) => handleOnChange('message', value)} Placeholder={'Enter Message'} />
           <InputComponent text={form.phone} style={styles.input} onChangeText={(value) => handleOnChange('phone', value)} Placeholder={'Enter Your Phone Number'} />
