@@ -64,7 +64,7 @@ export default function TabLayout() {
           ),
         }}
       />
-    
+
       <Tabs.Screen
         name="profile"
         options={{
@@ -77,7 +77,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      
+
     </Tabs>
   );
 }
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 2,
     display: 'flex',
     flexDirection: 'row',
-    justifyContent:'space-around', 
+    justifyContent: 'space-around',
     alignItems: 'center',
     borderTopWidth: 0,
     borderColor: 'grey'

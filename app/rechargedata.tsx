@@ -1,10 +1,10 @@
 import { View, Text, SafeAreaView, FlatList, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { API_URL } from '@env'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
+import Constants from 'expo-constants'
 
 const providerImages: { [key: string]: any } = {
   AIRTEL: require('../assets/images/bills/Airtel-Airtime.png'),
@@ -18,6 +18,7 @@ const rechargedata = () => {
   const [airtime, setAirtime] = useState([])
   const [loading, setLoading] = useState(false)
   const routes = useRouter()
+const API_URL = Constants.expoConfig?.extra?.API_URL;
 
   useEffect(() => {
     const handleAirtimeProviders = async () => {

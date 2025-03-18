@@ -1,11 +1,12 @@
 import { View, Text, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { API_URL } from "@env"
 import { Ionicons } from '@expo/vector-icons'
+import Constants from 'expo-constants'
 const Balance = ({ user }: any) => {
   const [balance, setBalance] = useState('')
   const [show, setShow] = useState(false)
+  const API_URL = Constants.expoConfig?.extra?.API_URL
   useEffect(() => {
     const fetchData = async () => {
       try {

@@ -2,11 +2,11 @@ import { onBoardingArrays } from "@/constant/arrays";
 import { FlatList, SafeAreaView, StyleSheet, Text, TouchableOpacity, View, useWindowDimensions } from "react-native";
 import { Image } from "react-native";
 import '../global.css'
-
 import { useRef, useState } from "react";
 import Pagination from "@/components/Pagination";
 import { useRouter } from "expo-router";
-export default function Index() {
+import React from "react";
+export default function Home() {
   // console.log(API_URL)
   const { width } = useWindowDimensions()
   const routes = useRouter()
@@ -40,10 +40,8 @@ export default function Index() {
     <View
       style={{
         flex: 1,
-        // justifyContent: "",
         alignItems: "center",
         backgroundColor: '#F2F2F2',
-
       }}
     >
       <View className="flex justify-center items-center">
@@ -61,25 +59,24 @@ export default function Index() {
                 <Text className="w-[87%]  font-normal top-16  absolute text-xl text-center text-gray-600">{item.subText}</Text>
               </View>
             </View>
-
           </View>
         )} keyExtractor={(item) => item.text} />
+
         <View>
           <View className="absolute bottom-64 w-full  ">
             <Pagination currentPage={currentPage} />
           </View>
           <View className="absolute w-full bottom-20  " style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: 'center', gap: 8 }}>
-            <TouchableOpacity onPress={currentPage === onBoardingArrays.length - 1 ? () =>  routes.push('/login') :  handleNextSlide } style={styles.button2} >
-              <Text style={styles.text2}>{currentPage === onBoardingArrays.length - 1 ? ' Login':'Next'}</Text>
+            <TouchableOpacity onPress={currentPage === onBoardingArrays.length - 1 ? () => routes.push('/login') : handleNextSlide} style={styles.button2} >
+              <Text style={styles.text2}>{currentPage === onBoardingArrays.length - 1 ? ' Login' : 'Next'}</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={currentPage === onBoardingArrays.length - 1 ? () =>  routes.push('/') :  handleLastSlide} style={styles.button3}>
-              <Text style={styles.text}>{currentPage === onBoardingArrays.length - 1 ? ' Create Account':'Skip'}</Text>
+            <TouchableOpacity onPress={currentPage === onBoardingArrays.length - 1 ? () => routes.push('/') : handleLastSlide} style={styles.button3}>
+              <Text style={styles.text}>{currentPage === onBoardingArrays.length - 1 ? ' Create Account' : 'Skip'}</Text>
             </TouchableOpacity>
 
           </View>
         </View>
       </View>
-
     </View>
   );
 }

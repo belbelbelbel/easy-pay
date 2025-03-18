@@ -5,8 +5,8 @@ import { Ionicons } from '@expo/vector-icons'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import InputComponent from '@/components/InputComponent'
 import axios from 'axios'
-import { Dropdown } from 'react-native-element-dropdown';
-import { API_URL } from '@env'
+import { Dropdown } from 'react-native-element-dropdown'
+import Constants from 'expo-constants'
 
 export default function cellulardata() {
     const { id } = useLocalSearchParams();
@@ -18,6 +18,8 @@ export default function cellulardata() {
         numbers: '',
         plan: '',
     });
+
+const API_URL = Constants.expoConfig?.extra?.API_URL;
 
 
     const handleFormChange = (name: string, value: string) => {

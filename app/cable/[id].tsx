@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
-import { API_URL } from '@env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Constants from 'expo-constants';
 
 type DataType = {
     _id: string;
@@ -16,7 +16,7 @@ const tvcables = () => {
     const [packages, setPackages] = useState<DataType>([]);
     const [loading, setLoading] = useState(false);
     const routes = useRouter();
-
+    const API_URL = Constants.expoConfig?.extra?.API_URL
     useEffect(() => {
         const handleGetPackages = async () => {
             setLoading(true);

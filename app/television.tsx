@@ -1,10 +1,10 @@
 import { View, Text, SafeAreaView, FlatList, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { API_URL } from '@env'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
+import Constants from 'expo-constants'
 
 const providerImages: { [key: string]: any } = {
   DSTV: require('../assets/images/bills/dstv.jpeg'),
@@ -17,6 +17,7 @@ const television = () => {
   const [airtime, setAirtime] = useState([])
   const [loading, setLoading] = useState(false)
   const routes = useRouter()
+const API_URL = Constants.expoConfig?.extra?.API_URL || "https://staging-api.teep.africa";
 
   useEffect(() => {
     const handleAirtimeProviders = async () => {

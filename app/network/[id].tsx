@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import InputComponent from '@/components/InputComponent'
 import axios from 'axios'
-import { API_URL } from '@env'
+import Constants from 'expo-constants'
 
 export default function networkProvider() {
   const { id } = useLocalSearchParams();
@@ -15,6 +15,7 @@ export default function networkProvider() {
     numbers: '',
     amount: '',
   });
+  const API_URL = Constants.expoConfig?.extra?.API_URL
   const [loading, setLoading] = useState(false);
 
   const handleFormChange = (name: string, value: string) => {

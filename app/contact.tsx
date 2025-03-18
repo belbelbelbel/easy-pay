@@ -6,7 +6,7 @@ import InputComponent from '@/components/InputComponent'
 import { StyleSheet } from 'react-native'
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { API_URL } from '@env'
+import Constants from 'expo-constants'
 
 const Contact = () => {
   const routes = useRouter()
@@ -19,7 +19,9 @@ const Contact = () => {
   })
   const [loading, setLoading] = useState(false)
 
- 
+  const API_URL = Constants.expoConfig?.extra?.API_URL ;
+
+
   const handleOnChange = (name: string, value: string) => {
     setForm({ ...form, [name]: value });
   }
@@ -40,7 +42,7 @@ const Contact = () => {
       const user = JSON.parse(await AsyncStorage.getItem('user') as string);
       const token = user?.token;
 
-      const res = await axios.post(`${API_URL}/api/v1/contact-us`, 
+      const res = await axios.post(`${API_URL}/api/v1/contact-us`,
         { ...form },
         { headers: { Authorization: `Bearer ${token}` } }
       );

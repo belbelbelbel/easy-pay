@@ -2,10 +2,10 @@ import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, ActivityIndi
 import React, { useState } from 'react'
 import InputComponent from '@/components/InputComponent'
 import { Ionicons } from '@expo/vector-icons';
-import { API_URL } from "@env"
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import Constants from 'expo-constants';
 
 const SignIn = () => {
     const [form, setForm] = useState({
@@ -13,7 +13,8 @@ const SignIn = () => {
         password: ''
     });
 
-    // console.log(API_URL, 'API_URL')
+    const API_URL = Constants.expoConfig?.extra?.API_URL || "https://staging-api.teep.africa";
+    console.log(API_URL, 'API_URL')
 
     const [loading, setLoading] = useState(false); // ✅ Added loading state
     const routes = useRouter();
