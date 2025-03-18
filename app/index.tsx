@@ -51,19 +51,19 @@ export default function Home() {
         <FlatList ref={ref} data={onBoardingArrays} onMomentumScrollEnd={updatedSlidEvent} showsHorizontalScrollIndicator={false} style={{ width: '100%', height: '100%' }} horizontal pagingEnabled renderItem={({ item, index }) => (
           <View className="h-full   ">
             <View className="h-[55%] bg- pb-5  justify-end flex ">
-              <Image className="" style={{ height: '52%', width: width, objectFit: 'contain' }} source={item.img} />
+              <Image className="" style={{ height: '49%', width: width, objectFit: 'contain' }} source={item.img} />
             </View>
             <View className=" h-[20%] flex  relative items-center bg-whiste">
               <View className="w-full flex top-10  relative items-center">
-                <Text className="w-[100%] absolute font-bold text-[2.7rem] text-center">{item.text}</Text>
-                <Text className="w-[87%]  font-normal top-16  absolute text-xl text-center text-gray-600">{item.subText}</Text>
+                <Text className="w-[100%] absolute font-bold text-[2.65rem] text-center">{item.text}</Text>
+                <Text className="w-[87%]  font-normal top-16  absolute text-lg text-center text-gray-600">{item.subText}</Text>
               </View>
             </View>
           </View>
         )} keyExtractor={(item) => item.text} />
 
         <View>
-          <View className="absolute bottom-64 w-full  ">
+          <View className="absolute bottom-60 w-full">
             <Pagination currentPage={currentPage} />
           </View>
           <View className="absolute w-full bottom-20  " style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: 'center', gap: 8 }}>

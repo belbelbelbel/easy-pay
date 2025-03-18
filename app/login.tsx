@@ -14,7 +14,6 @@ const SignIn = () => {
     });
 
     const API_URL = Constants.expoConfig?.extra?.API_URL || "https://staging-api.teep.africa";
-    console.log(API_URL, 'API_URL')
 
     const [loading, setLoading] = useState(false); // ✅ Added loading state
     const routes = useRouter();
@@ -41,7 +40,7 @@ const SignIn = () => {
                 password: password,
             });
 
-            console.log('Response:', result);
+            // console.log('Response:', result);
             if (result.data.status === 'success') {
                 const userData = result.data.data.user;
                 const token = result.data.data.token;
@@ -77,7 +76,7 @@ const SignIn = () => {
                 <Text className='text-white text-6xl font-bold'>EasyPay</Text>
             </View>
 
-            <View className='h-[65%] rounded-t-[2.3rem] flex gap-7 bg-[#F2F2F2] w-full'>
+            <View className='h-[65%] rounded-t-[2.3rem] items-center  flex gap-7 bg-[#F2F2F2] w-full'>
                 <View className='w-[85%] flex justify-center mt-10 gap-3 mx-auto'>
                     <Text className='text-3xl font-bold'>Log in to your account</Text>
                     <Text className='text-[1.05rem] font-light w-[90%]'>
@@ -123,12 +122,14 @@ const SignIn = () => {
                     </View>
                 </View>
 
-                <TouchableOpacity
-                    className='w-[85%] border-2 top-[5rem] mx-auto h-[4.2rem] px-5 flex items-center justify-center flex-row rounded-[7px]'
-                    onPress={() => alert('Account created')}
-                >
-                    <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 20 }}>Create Account</Text>
-                </TouchableOpacity>
+                <View className='flex items-center w-full'>
+                    <TouchableOpacity
+                        className='w-[85%] border-2   mx-auto h-[4.2rem] px-5 flex items-center justify-center flex-row rounded-[7px]'
+                        onPress={() => alert('Account created')}
+                    >
+                        <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 20 }}>Create Account</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </ImageBackground>
     );

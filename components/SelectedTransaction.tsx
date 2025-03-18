@@ -7,7 +7,7 @@ const SelectedTransaction = ({ selectedTransaction }: any) => {
     const routes = useRouter()
     return (
         <View className="mt-5 flex-1 ">
-            <View className="flex flex-row items-center justify-between w-full my-4">
+            <View className="flex flex-row items-center justify-between w-full my-2">
                 <Text className="font-bold text-[1.8rem]">Recent Transactions</Text>
                 <TouchableOpacity onPress={() => routes.push('/(tabs)/history')}>
                     <Text className="font-bold text-[1.1rem]">See All</Text>

@@ -46,7 +46,7 @@ const Contact = () => {
         { ...form },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log('Response:', res.data);
+      // console.log('Response:', res.data);
       Alert.alert('Success', 'Message sent successfully!');
       setForm({ firstName: '', lastName: '', email: '', message: '', phone: '' }); // Reset form
     } catch (error) {
@@ -56,7 +56,7 @@ const Contact = () => {
       setLoading(false);
     }
   }
-  console.log(form)
+  // console.log(form)
 
   return (
     <SafeAreaView className='flex-1'>

@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     left: 20,
     right: 20,
     bottom: 0,
-    height: 95,
+    height: 75,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
 
   floatingButton: {
     backgroundColor: 'black',
-    width: 64,
-    height: 64,
+    width: 57,
+    height: 57,
     borderRadius: 35,
     justifyContent: 'center',
     alignItems: 'center',

@@ -6,7 +6,7 @@ const Pagination = ({currentPage}:any) => {
     <View className='flex gap-4 flex-row items-center justify-center'>
         {
             onBoardingArrays.map((item, index) => (
-                <View key={index} style={{ width: 15, height: 15, backgroundColor: index === currentPage? 'black' : 'white', borderRadius: 100, borderWidth: currentPage === index ? 0 : 2, borderColor: 'black' }} />
+                <View key={index} style={{ width: 12, height: 12, backgroundColor: index === currentPage? 'black' : 'white', borderRadius: 100, borderWidth: currentPage === index ? 0 : 2, borderColor: 'black' }} />
             ))
         }
     </View>

@@ -1,4 +1,6 @@
-import { View, Text, SafeAreaView, FlatList, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { 
+  View, Text, SafeAreaView, FlatList, Image, TouchableOpacity, ActivityIndicator 
+} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Constants from "expo-constants";
@@ -13,43 +15,47 @@ const providerImages: { [key: string]: any } = {
   '9MOBILE': require('../assets/images/bills/9mobile-Airtime.png'),
 }
 
-const API_URL = Constants.expoConfig?.extra?.API_URL ;
-
+const API_URL = Constants.expoConfig?.extra?.API_URL;
 
 const Airtime = () => {
-  const [airtime, setAirtime] = useState([])
-  const [loading, setLoading] = useState(false)
-  const routes = useRouter()
+  const [airtime, setAirtime] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const routes = useRouter();
 
   useEffect(() => {
-    const handleAirtimeProviders = async () => {
-      setLoading(true)
-      const token = JSON.parse(await AsyncStorage.getItem('user') as any)?.token
-      if (!token) return;
+    fetchAirtimeProviders();
+  }, []);
 
-      try {
-        const res = await axios.get(`${API_URL}/api/v1/bill/airtime/providers`, {
-          headers: { 'Authorization': `Bearer ${token}` },
-        })
+  const fetchAirtimeProviders = async () => {
+    setLoading(true);
+    const token = JSON.parse(await AsyncStorage.getItem('user') as any)?.token;
+    if (!token) return;
 
-        const dataWithImages = res.data.data.map((provider: any) => ({
-          ...provider,
-          image: providerImages[provider.provider] || require('../assets/images/bills/GLO-Airtime.jpg'),
-        }))
+    try {
+      const res = await axios.get(`${API_URL}/api/v1/bill/airtime/providers`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
-        setAirtime(dataWithImages)
+      const dataWithImages = res.data.data.map((provider: any) => ({
+        ...provider,
+        image: providerImages[provider.provider] || require('../assets/images/bills/GLO-Airtime.jpg'),
+      }));
 
-        await AsyncStorage.setItem('airtimeProviders', JSON.stringify(dataWithImages))
-      } catch (error) {
-        console.log(error)
-      }
-      finally {
-        setLoading(false)
-      }
+      setAirtime(dataWithImages);
+      await AsyncStorage.setItem('airtimeProviders', JSON.stringify(dataWithImages));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
-    handleAirtimeProviders()
-  }, [])
+  };
 
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    await fetchAirtimeProviders();
+    setRefreshing(false);
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-gray-100 px-4 pt-6">
@@ -62,36 +68,36 @@ const Airtime = () => {
           <Ionicons name="search" size={30} />
         </View>
 
-        {
-          loading ? (
-            <View className="flex justify-center items-center h-[80%]">
-              <ActivityIndicator size="large" color="#000" />
-            </View>
-          )
-            :
-            (
-              <FlatList
-                data={airtime}
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }: any) => (
-                  <TouchableOpacity onPress={() => routes.push(`/network/${item.provider}`)} className="bg-white rounded-[1rem] p-4 mb-4 flex-row items-center shadow-sm">
-                    <Image
-                      source={providerImages[item.provider] || require('../assets/images/bills/GLO-Airtime.jpg')}
-                      className="w-16 h-16 rounded-md mr-4"
-                      resizeMode="contain"
-                    />
-                    <View>
-                      <Text className="text-lg font-semibold text-gray-900">{item.provider}</Text>
-                      {/* <Text className="text-gray-500 text-sm">Min: Rs. {item.minAmount}</Text> */}
-                    </View>
-                  </TouchableOpacity>
-                )}
-              />
-            )
-        }
+        {loading ? (
+          <View className="flex justify-center items-center h-[80%]">
+            <ActivityIndicator size="large" color="#000" />
+          </View>
+        ) : (
+          <FlatList
+            data={airtime}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({ item }: any) => (
+              <TouchableOpacity 
+                onPress={() => routes.push(`/network/${item.provider}`)} 
+                className="bg-white rounded-[1rem] p-4 mb-4 flex-row items-center shadow-sm"
+              >
+                <Image
+                  source={providerImages[item.provider] || require('../assets/images/bills/GLO-Airtime.jpg')}
+                  className="w-16 h-16 rounded-md mr-4"
+                  resizeMode="contain"
+                />
+                <View>
+                  <Text className="text-lg font-semibold text-gray-900">{item.provider}</Text>
+                </View>
+              </TouchableOpacity>
+            )}
+            refreshing={refreshing}
+            onRefresh={handleRefresh}
+          />
+        )}
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Airtime
+export default Airtime;
